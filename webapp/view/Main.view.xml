@@ -1,16 +1,17 @@
-<mvc:View controllerName="project1.controller.Main"
+<mvc:View xmlns:tnt="sap.tnt" controllerName="project1.controller.Main"
     xmlns:mvc="sap.ui.core.mvc"
-    xmlns="sap.m">
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core">
     <Page id="page" title="{i18n>title}">
         <content>
             <Toolbar class="sapUiSmallMarginTop sapUiSmallMarginBottom">
-                <SearchField width="30%" />
+                <SearchField width="30%" placeholder="Search..." liveChange=".onSearch" id="searchField"/>
                 <ToolbarSpacer />
-                <Button text="Add Product" type="Accept"/>
-                <Button text="Delete Product" type="Reject"/>
+                <Button text="Add Product" type="Accept" press=".onAddProductBtnPress"/>
+                <Button text="Delete Product" type="Reject" press=".onDeleteProductBtnPress"/>
             </Toolbar>
 
-            <List items="{oDataV2Model>/Products}" growing="true" >
+            <List id="productList" items="{oDataV2Model>/Products}" growing="true" mode="MultiSelect">
 
                 <items>
                     <ObjectListItem title="{oDataV2Model>Name}"
