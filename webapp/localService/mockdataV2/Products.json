@@ -1,172 +1,213 @@
 [
-    {
-    "OrderID": 7918,
-    "CustomerID": "TORTU",
-    "CustomerName": "Tortuga Restaurante",
-    "EmployeeID": 7424,
-    "OrderDate": "/Date(1474149600000)/",
-    "RequiredDate": "/Date(1475186400000)/",
-    "ShippedDate": "/Date(1474840800000)/",
-    "ShipVia": 6030,
-    "Freight": 7948.67,
-    "ShipName": "ExcellentParcel",
-    "ShipAddress": "Tottenham Court Road",
-    "ShipCity": "London",
-    "ShipRegion": "Greater London",
-    "ShipPostalCode": "N170AA",
-    "ShipCountry": "United Kingdom"
-    },
-  {
-	"OrderID": 7311,
-	"CustomerID": "ALFKI",
-	"CustomerName": "Alfreds Futterkiste",
-	"EmployeeID": 7827,
-	"OrderDate": "/Date(1479682800000)/",
-	"RequiredDate": "/Date(1481151600000)/",
-	"ShippedDate": "/Date(1480028400000)/",
-	"ShipVia": 3416,
-	"Freight": 7624.42,
-	"ShipName": "ExcellentParcel",
-	"ShipAddress": "Tottenham Court Road",
-	"ShipCity": "London",
-	"ShipRegion": "Greater London",
-	"ShipPostalCode": "N170AA",
-	"ShipCountry": "United Kingdom"
-  },
-  {
-	"OrderID": 7375,
-	"CustomerID": "AROUT",
-	"CustomerName": "Around the Horn",
-	"EmployeeID": 7424,
-	"OrderDate": "/Date(1475704800000)/",
-	"RequiredDate": "/Date(1479337200000)/",
-	"ShippedDate": "/Date(1476396000000)/",
-	"ShipVia": 7532,
-	"Freight": 4019.56,
-	"ShipName": "ExcellentParcel",
-	"ShipAddress": "Tottenham Court Road",
-	"ShipCity": "London",
-	"ShipRegion": "Greater London",
-	"ShipPostalCode": "N170AA",
-	"ShipCountry": "United Kingdom"
-  },
-  {
-	"OrderID": 6189,
-	"CustomerID": "BERGS",
-	"CustomerName": "Berglunds snabbk�p",
-	"EmployeeID": 7829,
-	"OrderDate": "/Date(1480287600000)/",
-	"RequiredDate": "/Date(1482274800000)/",
-	"ShippedDate": "/Date(1480460400000)/",
-	"ShipVia": 1923,
-	"Freight": 5422.26,
-	"ShipName": "1A Paket- und Lieferservice",
-	"ShipAddress": "Bismarckstra�e 5",
-	"ShipCity": "Berlin",
-	"ShipRegion": "Berlin",
-	"ShipPostalCode": "10179",
-	"ShipCountry": "Deutschland"
-  },
-  {
-	"OrderID": 3115,
-	"CustomerID": "BERGS",
-	  "CustomerName": "",
-	"EmployeeID": 7830,
-	"OrderDate": "/Date(1480806000000)/",
-	"RequiredDate": "/Date(1480978800000)/",
-	"ShippedDate": "/Date(1482447600000)/",
-	"ShipVia": 3059,
-	"Freight": 9130.44,
-	"ShipName": "1A Paket- und Lieferservice",
-	"ShipAddress": "Bismarckstra�e 5",
-	"ShipCity": "Berlin",
-	"ShipRegion": "Berlin",
-	"ShipPostalCode": "10179",
-	"ShipCountry": "Deutschland"
-  },
-  {
-	"OrderID": 2686,
-	"CustomerID": "BOTTM",
-	"CustomerName": "Bottom-Dollar Markets",
-	"EmployeeID": 7840,
-	"OrderDate": "/Date(1477519200000)/",
-	"RequiredDate": "/Date(1478646000000)/",
-	"ShippedDate": "/Date(1477954800000)/",
-	"ShipVia": 4728,
-	"Freight": 8237.06,
-	"ShipName": "1A Paket- und Lieferservice",
-	"ShipAddress": "Bismarckstra�e 5",
-	"ShipCity": "Berlin",
-	"ShipRegion": "Berlin",
-	"ShipPostalCode": "10179",
-	"ShipCountry": "Deutschland"
-  },
-  {
-	"OrderID": 6858,
-	"CustomerID": "TORTU",
-	  "CustomerName": "Tortuga Restaurante",
-	"EmployeeID": 7840,
-	"OrderDate": "/Date(1478991600000)/",
-	"RequiredDate": "/Date(1480460400000)/",
-	"ShippedDate": "/Date(1479078000000)/",
-	"ShipVia": 6103,
-	"Freight": 4097.09,
-	"ShipName": "ExcellentParcel",
-	"ShipAddress": "Tottenham Court Road",
-	"ShipCity": "London",
-	"ShipRegion": "Greater London",
-	"ShipPostalCode": "N170AA",
-	"ShipCountry": "United Kingdom"
-  },
-  {
-	"OrderID": 6368,
-	"CustomerID": "ALFKI",
-	"CustomerName": "Alfreds Futterkiste",
-	"EmployeeID": 7424,
-	"OrderDate": "/Date(1478991600000)/",
-	"RequiredDate": "/Date(1480460400000)/",
-	"ShippedDate": "/Date(1479510000000)/",
-	"ShipVia": 9412,
-	"Freight": 1858.37,
-	"ShipName": "ExcellentParcel",
-	"ShipAddress": "Tottenham Court Road",
-	"ShipCity": "London",
-	"ShipRegion": "Greater London",
-	"ShipPostalCode": "N170AA",
-	"ShipCountry": "United Kingdom"
-  },
-  {
-	"OrderID": 828,
-	"CustomerID": "AROUT",
-	"CustomerName": "Around the Horn",
-	"EmployeeID": 7829,
-	"OrderDate": "/Date(1479682800000)/",
-	"RequiredDate": "/Date(1481151600000)/",
-	"ShippedDate": "/Date(1480028400000)/",
-	"ShipVia": 508,
-	"Freight": 2347.15,
-	"ShipName": "ShipEx",
-	"ShipAddress": "5th Avenue 610",
-	"ShipCity": "New York",
-	"ShipRegion": "New Jersey",
-	"ShipPostalCode": "10020",
-	"ShipCountry": "United Stated of America"
-  },
-  {
-	"OrderID": 7991,
-	"CustomerID": "BERGS",
-	"CustomerName": "Berglunds snabbk�p",
-	"EmployeeID": 7830,
-	"OrderDate": "/Date(1479682800000)/",
-	"RequiredDate": "/Date(1481151600000)/",
-	"ShippedDate": "/Date(1480028400000)/",
-	"ShipVia": 6419,
-	"Freight": 6554.71,
-	"ShipName": "ShipEx",
-	"ShipAddress": "5th Avenue 610",
-	"ShipCity": "New York",
-	"ShipRegion": "New Jersey",
-	"ShipPostalCode": "10020",
-	"ShipCountry": "United Stated of America"
-  }
-]
+	{
+	  "ID": 1,
+	  "Name": "iPhone 15 Pro",
+	  "Description": "Smartphone.",
+	  "ReleaseDate": "/Date(1693526400000)/",
+	  "DiscontinuedDate": null,
+	  "Rating": 5,
+	  "Price": 1199.00,
+	  "Supplier": {
+		"ID": 1,
+		"Concurrency": 0,
+		"Name": "Apple Inc.",
+		"Address": {
+		  "Street": "1 Apple Park Way",
+		  "City": "Cupertino",
+		  "State": "CA",
+		  "ZipCode": "95014",
+		  "Country": "USA"
+		}
+	  }
+	},
+	{
+	  "ID": 2,
+	  "Name": "Samsung Galaxy S24",
+	  "Description": "Smartphone.",
+	  "ReleaseDate": "/Date(1705276800000)/",
+	  "DiscontinuedDate": null,
+	  "Rating": 4,
+	  "Price": 999.00,
+	  "Supplier": {
+		"ID": 2,
+		"Concurrency": 0,
+		"Name": "Samsung",
+		"Address": {
+		  "Street": "129 Samsung-ro",
+		  "City": "Suwon",
+		  "State": "",
+		  "ZipCode": "16677",
+		  "Country": "South Korea"
+		}
+	  }
+	},
+	{
+	  "ID": 3,
+	  "Name": "Google Pixel 8",
+	  "Description": "Smartphone.",
+	  "ReleaseDate": "/Date(1696118400000)/",
+	  "DiscontinuedDate": null,
+	  "Rating": 4,
+	  "Price": 899.00,
+	  "Supplier": {
+		"ID": 3,
+		"Concurrency": 0,
+		"Name": "Google",
+		"Address": {
+		  "Street": "1600 Amphitheatre Parkway",
+		  "City": "Mountain View",
+		  "State": "CA",
+		  "ZipCode": "94043",
+		  "Country": "USA"
+		}
+	  }
+	},
+	{
+	  "ID": 4,
+	  "Name": "MacBook Pro 14",
+	  "Description": "Laptop.",
+	  "ReleaseDate": "/Date(1693526400000)/",
+	  "DiscontinuedDate": null,
+	  "Rating": 5,
+	  "Price": 1999.00,
+	  "Supplier": {
+		"ID": 1,
+		"Concurrency": 0,
+		"Name": "Apple Inc.",
+		"Address": {
+		  "Street": "1 Apple Park Way",
+		  "City": "Cupertino",
+		  "State": "CA",
+		  "ZipCode": "95014",
+		  "Country": "USA"
+		}
+	  }
+	},
+	{
+	  "ID": 5,
+	  "Name": "Dell XPS 15",
+	  "Description": "Laptop.",
+	  "ReleaseDate": "/Date(1672531200000)/",
+	  "DiscontinuedDate": null,
+	  "Rating": 4,
+	  "Price": 1799.00,
+	  "Supplier": {
+		"ID": 4,
+		"Concurrency": 0,
+		"Name": "Dell",
+		"Address": {
+		  "Street": "One Dell Way",
+		  "City": "Round Rock",
+		  "State": "TX",
+		  "ZipCode": "78682",
+		  "Country": "USA"
+		}
+	  }
+	},
+	{
+	  "ID": 6,
+	  "Name": "iPad Pro",
+	  "Description": "Tablet.",
+	  "ReleaseDate": "/Date(1680307200000)/",
+	  "DiscontinuedDate": null,
+	  "Rating": 5,
+	  "Price": 1099.00,
+	  "Supplier": {
+		"ID": 1,
+		"Concurrency": 0,
+		"Name": "Apple Inc.",
+		"Address": {
+		  "Street": "1 Apple Park Way",
+		  "City": "Cupertino",
+		  "State": "CA",
+		  "ZipCode": "95014",
+		  "Country": "USA"
+		}
+	  }
+	},
+	{
+	  "ID": 7,
+	  "Name": "Apple Watch Series 9",
+	  "Description": "Smartwatch.",
+	  "ReleaseDate": "/Date(1693526400000)/",
+	  "DiscontinuedDate": null,
+	  "Rating": 4,
+	  "Price": 399.00,
+	  "Supplier": {
+		"ID": 1,
+		"Concurrency": 0,
+		"Name": "Apple Inc.",
+		"Address": {
+		  "Street": "1 Apple Park Way",
+		  "City": "Cupertino",
+		  "State": "CA",
+		  "ZipCode": "95014",
+		  "Country": "USA"
+		}
+	  }
+	},
+	{
+	  "ID": 8,
+	  "Name": "Sony WH-1000XM5",
+	  "Description": "Headphones.",
+	  "ReleaseDate": "/Date(1654041600000)/",
+	  "DiscontinuedDate": null,
+	  "Rating": 5,
+	  "Price": 399.00,
+	  "Supplier": {
+		"ID": 5,
+		"Concurrency": 0,
+		"Name": "Sony",
+		"Address": {
+		  "Street": "1-7-1 Konan",
+		  "City": "Tokyo",
+		  "State": "",
+		  "ZipCode": "108-0075",
+		  "Country": "Japan"
+		}
+	  }
+	},
+	{
+	  "ID": 9,
+	  "Name": "Logitech MX Master 3S",
+	  "Description": "Mouse.",
+	  "ReleaseDate": "/Date(1651363200000)/",
+	  "DiscontinuedDate": null,
+	  "Rating": 5,
+	  "Price": 99.00,
+	  "Supplier": {
+		"ID": 6,
+		"Concurrency": 0,
+		"Name": "Logitech",
+		"Address": {
+		  "Street": "Logitech Campus",
+		  "City": "Lausanne",
+		  "State": "",
+		  "ZipCode": "1015",
+		  "Country": "Switzerland"
+		}
+	  }
+	},
+	{
+	  "ID": 10,
+	  "Name": "Samsung 970 EVO Plus",
+	  "Description": "SSD.",
+	  "ReleaseDate": "/Date(1548979200000)/",
+	  "DiscontinuedDate": null,
+	  "Rating": 4,
+	  "Price": 149.00,
+	  "Supplier": {
+		"ID": 2,
+		"Concurrency": 0,
+		"Name": "Samsung",
+		"Address": {
+		  "Street": "129 Samsung-ro",
+		  "City": "Suwon",
+		  "State": "",
+		  "ZipCode": "16677",
+		  "Country": "South Korea"
+		}
+	  }
+	}
+  ]
+  

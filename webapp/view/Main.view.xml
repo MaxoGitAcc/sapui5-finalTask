@@ -2,5 +2,29 @@
     xmlns:mvc="sap.ui.core.mvc"
     xmlns="sap.m">
     <Page id="page" title="{i18n>title}">
+        <content>
+            <Toolbar class="sapUiSmallMarginTop sapUiSmallMarginBottom">
+                <SearchField width="30%" />
+                <ToolbarSpacer />
+                <Button text="Add Product" type="Accept"/>
+                <Button text="Delete Product" type="Reject"/>
+            </Toolbar>
+
+            <List items="{oDataV2Model>/Products}" growing="true" >
+
+                <items>
+                    <ObjectListItem title="{oDataV2Model>Name}"
+                        number="{oDataV2Model>Price}"
+                        numberUnit="USD" type="Navigation">
+
+                        <attributes>
+                            <ObjectAttribute text="{oDataV2Model>Description}" />
+                        </attributes>
+
+                    </ObjectListItem>
+                </items>
+
+            </List>
+        </content>
     </Page>
 </mvc:View>
