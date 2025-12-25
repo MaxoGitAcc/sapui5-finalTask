@@ -100,12 +100,21 @@
           "target": [
             "TargetMain"
           ]
+        }, {
+          "name": "Product",
+          "pattern": "Product/{productId}",
+          "target": "Product"
         }
       ],
       "targets": {
         "TargetMain": {
           "id": "Main",
           "name": "Main"
+        },
+        "Product": {
+          "id": "Product",
+          "name": "Product",
+          "level": 2
         }
       }
     },

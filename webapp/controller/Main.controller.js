@@ -15,7 +15,7 @@ sap.ui.define([
         _createAddDialog: async function() {
             if(!this._oAddDialog) {
                 this._oAddDialog = await this.loadFragment({
-                    name: "project1.view.AddProductDialog"
+                    name: "project1.view.fragments.AddProductDialog"
                 });
 
                 this.getView().addDependent(this._oAddDialog);
@@ -164,7 +164,19 @@ sap.ui.define([
             }
         
             oBinding.filter(aFilters);
-        }
+        },
+
+
+        //NAVIGATION TO DETAIL PAGE
+        onListProductPressed: function (oEvent) {
+            const oRouter = this.getOwnerComponent().getRouter();
+            const oItem = oEvent.getSource();
+            const oContext = oItem.getBindingContext("oDataV2Model");
         
+            oRouter.navTo("Product", {
+                productId: oContext.getProperty("ID")
+            });
+        }
+
     });
 });
