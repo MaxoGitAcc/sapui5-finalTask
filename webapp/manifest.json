@@ -83,9 +83,9 @@
     },
     "routing": {
       "config": {
-        "routerClass": "sap.m.routing.Router",
-        "controlAggregation": "pages",
-        "controlId": "app",
+        "routerClass": "sap.f.routing.Router",
+        "controlAggregation": "beginColumnPages",
+        "controlId": "flexibleColumnLayout",
         "transition": "slide",
         "type": "View",
         "viewType": "XML",
@@ -109,11 +109,15 @@
       "targets": {
         "TargetMain": {
           "id": "Master",
-          "name": "Master"
+          "name": "Master",
+          "controlAggregation": "beginColumnPages",
+          "controlId": "flexibleColumnLayout"
         },
         "Detail": {
           "id": "Detail",
           "name": "Detail",
+          "controlAggregation": "midColumnPages",
+          "controlId": "flexibleColumnLayout",
           "level": 2
         }
       }

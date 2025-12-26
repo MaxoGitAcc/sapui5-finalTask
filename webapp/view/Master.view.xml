@@ -16,7 +16,7 @@
                 <items>
                     <ObjectListItem title="{oDataV2Model>Name}"
                         number="{oDataV2Model>Price}"
-                        numberUnit="USD" type="Navigation" press=".onListProductPressed">
+                        numberUnit="USD" type="Active" press=".onListProductPressed">
 
                         <attributes>
                             <ObjectAttribute text="{oDataV2Model>Description}" />

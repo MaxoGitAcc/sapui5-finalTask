@@ -3,8 +3,9 @@ sap.ui.define([
     "sap/m/MessageToast",
     "project1/util/Validations",
     "sap/ui/model/Filter",
-    "sap/ui/model/FilterOperator"
-], (BaseController, MessageToast, Validations, Filter, FilterOperator) => {
+    "sap/ui/model/FilterOperator",
+    "sap/f/LayoutType",
+], (BaseController, MessageToast, Validations, Filter, FilterOperator, LayoutType) => {
     "use strict";
 
     return BaseController.extend("project1.controller.Master", {
@@ -168,15 +169,17 @@ sap.ui.define([
 
 
         //NAVIGATION TO DETAIL PAGE
-        onListProductPressed: function (oEvent) {
+        onListProductPressed: function(oEvent) {
             const oRouter = this.getOwnerComponent().getRouter();
             const oItem = oEvent.getSource();
             const oContext = oItem.getBindingContext("oDataV2Model");
+        
+            const oFCL = this.getView().getParent().getParent();
+            oFCL.setLayout(LayoutType.TwoColumnsMidExpanded);
         
             oRouter.navTo("Detail", {
                 productId: oContext.getProperty("ID")
             });
         }
-
     });
 });

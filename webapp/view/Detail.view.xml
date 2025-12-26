@@ -6,7 +6,7 @@
 
         <ObjectPageLayout>
             <sections>
-                <ObjectPageSection title="zdarova">
+                <ObjectPageSection title="Product Details">
                     <subSections>
                         <ObjectPageSubSection>
                             <blocks>
@@ -29,6 +29,9 @@
                                     singleContainerFullSize="false">
 
                                     <form:content>
+                                        <m:Label text="Name"/>
+                                        <m:Text text="{oDataV2Model>Name}"/>
+
                                         <m:Label text="Description"/>
                                         <m:Text text="{oDataV2Model>Description}"/>
 
