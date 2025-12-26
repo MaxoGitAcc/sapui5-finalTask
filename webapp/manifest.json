@@ -101,19 +101,19 @@
             "TargetMain"
           ]
         }, {
-          "name": "Product",
-          "pattern": "Product/{productId}",
-          "target": "Product"
+          "name": "Detail",
+          "pattern": "Detail/{productId}",
+          "target": "Detail"
         }
       ],
       "targets": {
         "TargetMain": {
-          "id": "Main",
-          "name": "Main"
+          "id": "Master",
+          "name": "Master"
         },
-        "Product": {
-          "id": "Product",
-          "name": "Product",
+        "Detail": {
+          "id": "Detail",
+          "name": "Detail",
           "level": 2
         }
       }

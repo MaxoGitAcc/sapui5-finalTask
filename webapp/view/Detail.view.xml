@@ -1,0 +1,57 @@
+<mvc:View controllerName="project1.controller.Detail"
+    xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.uxap"
+	xmlns:m="sap.m"
+    xmlns:form="sap.ui.layout.form">
+
+        <ObjectPageLayout>
+            <sections>
+                <ObjectPageSection title="zdarova">
+                    <subSections>
+                        <ObjectPageSubSection>
+                            <blocks>
+
+                                <form:SimpleForm
+                                    editable="false"
+                                    layout="ResponsiveGridLayout"
+                                    labelSpanXL="4"
+                                    labelSpanL="3"
+                                    labelSpanM="4"
+                                    labelSpanS="12"
+                                    adjustLabelSpan="false"
+                                    emptySpanXL="0"
+                                    emptySpanL="4"
+                                    emptySpanM="0"
+                                    emptySpanS="0"
+                                    columnsXL="2"
+                                    columnsL="1"
+                                    columnsM="1"
+                                    singleContainerFullSize="false">
+
+                                    <form:content>
+                                        <m:Label text="Description"/>
+                                        <m:Text text="{oDataV2Model>Description}"/>
+
+                                        <m:Label text="Release Date"/>
+                                        <m:Text text="{oDataV2Model>ReleaseDate}"/>
+
+                                        <m:Label text="Discontinued Date"/>
+                                        <m:Text text="{oDataV2Model>DiscontinuedDate}"/>
+
+                                        <m:Label text="Rating"/>
+                                        <m:Text text="{oDataV2Model>Rating}"/>
+
+                                        <m:Label text="Price"/>
+                                        <m:Text text="{oDataV2Model>Price}"/>
+                                    </form:content>
+
+                                </form:SimpleForm>
+
+                            </blocks>
+                        </ObjectPageSubSection>
+                    </subSections>
+                </ObjectPageSection>
+
+            </sections>
+        </ObjectPageLayout>
+</mvc:View>

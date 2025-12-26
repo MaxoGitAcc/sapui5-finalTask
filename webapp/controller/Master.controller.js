@@ -7,7 +7,7 @@ sap.ui.define([
 ], (BaseController, MessageToast, Validations, Filter, FilterOperator) => {
     "use strict";
 
-    return BaseController.extend("project1.controller.Main", {
+    return BaseController.extend("project1.controller.Master", {
         onInit() {
         },
 
@@ -173,7 +173,7 @@ sap.ui.define([
             const oItem = oEvent.getSource();
             const oContext = oItem.getBindingContext("oDataV2Model");
         
-            oRouter.navTo("Product", {
+            oRouter.navTo("Detail", {
                 productId: oContext.getProperty("ID")
             });
         }
