@@ -1,6 +1,7 @@
 sap.ui.define([
-    "project1/controller/BaseController"
-], function (BaseController) {
+    "project1/controller/BaseController",
+    "sap/f/LayoutType"
+], function (BaseController, LayoutType) {
     "use strict";
 
     return BaseController.extend("project1.controller.Detail", {
@@ -22,6 +23,19 @@ sap.ui.define([
                     expand: "Supplier"
                 }
             });
-        }
+
+            const oFCL = this.getView().getParent().getParent();
+            if (oFCL.getLayout() !== LayoutType.TwoColumnsMidExpanded) {
+                oFCL.setLayout(LayoutType.TwoColumnsMidExpanded);
+            }
+        },
+
+        onCloseDetailScreen: function() {
+            const oFCL = this.getView().getParent().getParent();
+            oFCL.setLayout(LayoutType.OneColumn);
+        
+            const oRouter = this.getOwnerComponent().getRouter();
+            oRouter.navTo("RouteMain", {}, true);
+        },
     });
 });
