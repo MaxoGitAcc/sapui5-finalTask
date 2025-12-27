@@ -58,10 +58,12 @@
                                         <m:Text text="{oDataV2Model>Description}"/>
 
                                         <m:Label text="Release Date"/>
-                                        <m:Text text="{oDataV2Model>ReleaseDate}"/>
+                                        <m:Text text="{path: 'oDataV2Model>ReleaseDate',
+                                                formatter: '.formatter.formatMonthYear'}"/>
 
                                         <m:Label text="Discontinued Date"/>
-                                        <m:Text text="{oDataV2Model>DiscontinuedDate}"/>
+                                        <m:Text text="{path: 'oDataV2Model>DiscontinuedDate',
+                                                formatter: '.formatter.formatMonthYear'}"/>
 
                                         <m:Label text="Rating"/>
                                         <m:Text text="{oDataV2Model>Rating}"/>
@@ -71,45 +73,6 @@
                                     </form:content>
 
                                 </form:SimpleForm>
-
-                            </blocks>
-                        </ObjectPageSubSection>
-                    </subSections>
-                </ObjectPageSection>
-
-
-                <ObjectPageSection title="Product Avaliable at">
-                    <subSections>
-                        <ObjectPageSubSection>
-                            <blocks>
-
-                                <m:Table id="supplierTable">
-
-                                    <m:columns>
-                                        <m:Column><m:Label text="Id"/></m:Column>
-                                        <m:Column><m:Label text="Name"/></m:Column>
-                                        <m:Column><m:Label text="Street"/></m:Column>
-                                        <m:Column><m:Label text="City"/></m:Column>
-                                        <m:Column><m:Label text="State"/></m:Column>
-                                        <m:Column><m:Label text="Zip"/></m:Column>
-                                        <m:Column><m:Label text="Country"/></m:Column>
-                                    </m:columns>
-
-                                    <m:items>
-                                        <m:ColumnListItem  binding="{path:'oDataV2Model>Supplier'}">
-                                            <m:cells>
-                                                <m:Text text="{oDataV2Model>ID}" />
-                                                <m:Text text="{oDataV2Model>Name}" />
-                                                <m:Text text="{oDataV2Model>Address/Street}" />
-                                                <m:Text text="{oDataV2Model>Address/City}" />
-                                                <m:Text text="{oDataV2Model>Address/State}" />
-                                                <m:Text text="{oDataV2Model>Address/ZipCode}" />
-                                                <m:Text text="{oDataV2Model>Address/Country}" />
-                                            </m:cells>
-                                        </m:ColumnListItem>
-                                    </m:items>
-
-                                </m:Table>
 
                             </blocks>
                         </ObjectPageSubSection>

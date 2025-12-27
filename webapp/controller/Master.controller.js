@@ -5,7 +5,8 @@ sap.ui.define([
     "sap/ui/model/Filter",
     "sap/ui/model/FilterOperator",
     "sap/f/LayoutType",
-], (BaseController, MessageToast, Validations, Filter, FilterOperator, LayoutType) => {
+    "sap/ui/model/Sorter"
+], (BaseController, MessageToast, Validations, Filter, FilterOperator, LayoutType, Sorter) => {
     "use strict";
 
     return BaseController.extend("project1.controller.Master", {
@@ -120,34 +121,7 @@ sap.ui.define([
                 }
             });
         },
-
-        //DELETE BTN MAIN PAGE
-        onDeleteProductBtnPress: function () {
-            const oList = this.byId("productList");
-            const oModel = this.getModel("oDataV2Model");
-            const aSelectedItems = oList.getSelectedItems();
-        
-            if (!aSelectedItems.length) {
-                MessageToast.show("Select at least one product");
-                return;
-            }
-        
-            aSelectedItems.forEach(oItem => {
-                const oContext = oItem.getBindingContext("oDataV2Model");
-                oModel.remove(oContext.getPath());
-            });
-        
-            oModel.submitChanges({
-                success: () => {
-                    MessageToast.show("Product(s) deleted");
-                    oModel.refresh(true);
-                    oList.removeSelections(true);
-                },
-                error: () => {
-                    MessageToast.show("Delete failed");
-                }
-            });
-        },
+    
 
 
         //SEARCH FIELD MAIN PAGE
@@ -165,6 +139,50 @@ sap.ui.define([
             }
         
             oBinding.filter(aFilters);
+        },
+
+
+        
+        //Filter
+        _createFilterDialog: async function() {
+            if (!this._oFilterDialog) {
+                this._oFilterDialog = await this.loadFragment({
+                    name: "project1.view.fragments.FilterDialog"
+                });
+
+                this.getView().addDependent(this._oFilterDialog);
+            }
+
+            return this._oFilterDialog;
+        },
+
+        onFilterBtnPress: async function() {
+            const oDialog = await this._createFilterDialog();
+            oDialog.open();
+        },
+
+        onFilterDialogCancel: function() {
+            this._oFilterDialog.close();
+        },
+
+        onFilterDialogSave: function(oEvent) {
+            const oDialog = oEvent.getSource().getParent();
+            const oRadioGroup = oDialog.getContent()[0].getItems()[0];
+            const iSelected = oRadioGroup.getSelectedIndex();        
+            const oList = this.byId("productList");
+            const oBinding = oList.getBinding("items");
+        
+            let oSorter;
+            switch (iSelected) {
+                case 0: oSorter = new Sorter("Price", false); break;
+                case 1: oSorter = new Sorter("Price", true); break;
+                case 2: oSorter = new Sorter("Name", false); break;
+                case 3: oSorter = new Sorter("Name", true); break;
+            }
+        
+            if (oSorter) oBinding.sort(oSorter);
+        
+            oDialog.close();
         },
 
 

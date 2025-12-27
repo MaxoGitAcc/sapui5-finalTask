@@ -4,14 +4,14 @@
     xmlns:core="sap.ui.core">
     <Page id="page" title="{i18n>title}">
         <content>
-            <Toolbar class="sapUiSmallMarginTop sapUiSmallMarginBottom">
-                <SearchField width="30%" placeholder="Search..." liveChange=".onSearch" id="searchField"/>
+            <Toolbar class="sapUiSmallMarginTop sapUiSmallMarginBottom">      
                 <ToolbarSpacer />
+                <SearchField width="20%" placeholder="Search..." liveChange=".onSearch" id="searchField"/>
+                <Button icon="sap-icon://filter" text="Filter" type="Emphasized" press=".onFilterBtnPress"/>
                 <Button text="Add Product" type="Accept" press=".onAddProductBtnPress"/>
-                <Button text="Delete Product" type="Reject" press=".onDeleteProductBtnPress"/>
             </Toolbar>
 
-            <List id="productList" items="{oDataV2Model>/Products}" growing="true" mode="MultiSelect">
+            <List id="productList" items="{oDataV2Model>/Products}" growing="true">
 
                 <items>
                     <ObjectListItem title="{oDataV2Model>Name}"

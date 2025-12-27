@@ -1,17 +1,19 @@
 sap.ui.define([
     "project1/controller/BaseController",
     "project1/util/Validations",
+    "project1/util/DateFormatter",
     "sap/f/LayoutType",
     "sap/m/MessageToast"
-], function (BaseController, Validations, LayoutType, MessageToast) {
+], function (BaseController, Validations, DateFormatter, LayoutType, MessageToast) {
     "use strict";
 
     return BaseController.extend("project1.controller.Detail", {
-
         onInit: function () {
             this.getOwnerComponent().getRouter().getRoute("Detail")
                 .attachPatternMatched(this._onRouteMatched, this);
         },
+
+        formatter: DateFormatter,
 
         _onRouteMatched: function (oEvent) {
             const sProductId = oEvent.getParameter("arguments").productId;
@@ -20,10 +22,7 @@ sap.ui.define([
 
             this.getView().bindElement({
                 path: sPath,
-                model: "oDataV2Model",
-                parameters: {
-                    expand: "Supplier"
-                }
+                model: "oDataV2Model"
             });
 
             const oFCL = this.getView().getParent().getParent();
