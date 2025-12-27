@@ -3,8 +3,9 @@ sap.ui.define([
     "project1/util/Validations",
     "project1/util/DateFormatter",
     "sap/f/LayoutType",
-    "sap/m/MessageToast"
-], function (BaseController, Validations, DateFormatter, LayoutType, MessageToast) {
+    "sap/m/MessageToast",
+    "sap/m/MessageBox"
+], function (BaseController, Validations, DateFormatter, LayoutType, MessageToast, MessageBox) {
     "use strict";
 
     return BaseController.extend("project1.controller.Detail", {
@@ -78,9 +79,7 @@ sap.ui.define([
                 success: function() {
                     oDialog.close();
                 },
-                error: function() {
-                    MessageToast.show("Error saving changes");
-                }
+                error: (oError) => {this._showODataErrorV2(oError, "errorWhenEditingProduct");}   
             })
         },
 
@@ -132,10 +131,28 @@ sap.ui.define([
                     MessageToast.show("Product deleted successfully");
                     this.onCloseDetailScreen();
                 },
-                error: () => {
-                    MessageToast.show("Error deleting product");
-                }
+                error: (oError) => {this._showODataErrorV2(oError, "errorWhenDeletingProduct");}   
             });
+        },
+
+        _showODataError: function (oError, sI18nKey) {
+            const oBundle = this.getModel("i18n").getResourceBundle();
+            const sFallback = oBundle.getText(sI18nKey);
+        
+            let sMessage = "";
+        
+            try {
+                if (oError?.responseText) {
+                    const oErrObj = JSON.parse(oError.responseText);
+                    sMessage = oErrObj?.error?.message?.value || "";
+                } else if (oError?.message) {
+                    sMessage = oError.message;
+                }
+            } catch (e) {
+                console.warn("Error parsing backend response:", e);
+            }
+        
+            MessageBox.error(sMessage || sFallback);
         }
     });
 });

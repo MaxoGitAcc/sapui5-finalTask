@@ -5,8 +5,9 @@ sap.ui.define([
     "sap/ui/model/Filter",
     "sap/ui/model/FilterOperator",
     "sap/f/LayoutType",
-    "sap/ui/model/Sorter"
-], (BaseController, MessageToast, Validations, Filter, FilterOperator, LayoutType, Sorter) => {
+    "sap/ui/model/Sorter",
+    "sap/m/MessageBox"
+], (BaseController, MessageToast, Validations, Filter, FilterOperator, LayoutType, Sorter, MessageBox) => {
     "use strict";
 
     return BaseController.extend("project1.controller.Master", {
@@ -61,7 +62,23 @@ sap.ui.define([
                     this._resetDialogFields();
                 },
                 error: () => {
-                    MessageToast.show("Error saving changes");
+                    const oBundle = this.getModel("i18n").getResourceBundle();
+                    const sFallback = oBundle.getText(sI18nKey);
+                
+                    let sMessage = "";
+                
+                    try {
+                        if (oError?.responseText) {
+                            const oErrObj = JSON.parse(oError.responseText);
+                            sMessage = oErrObj?.error?.message?.value || "";
+                        } else if (oError?.message) {
+                            sMessage = oError.message;
+                        }
+                    } catch (e) {
+                        console.warn("Error parsing backend response:", e);
+                    }
+                
+                    MessageBox.error(sMessage || sFallback);
                 }  
             });
         },
