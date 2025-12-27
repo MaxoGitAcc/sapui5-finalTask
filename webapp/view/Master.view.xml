@@ -6,17 +6,17 @@
         <content>
             <Toolbar class="sapUiSmallMarginTop sapUiSmallMarginBottom">      
                 <ToolbarSpacer />
-                <SearchField width="20%" placeholder="Search..." liveChange=".onSearch" id="searchField"/>
-                <Button icon="sap-icon://filter" text="Filter" type="Emphasized" press=".onFilterBtnPress"/>
-                <Button text="Add Product" type="Accept" press=".onAddProductBtnPress"/>
+                <SearchField width="20%" placeholder="{i18n>searchFieldPlaceholder}" liveChange=".onSearch" id="searchField"/>
+                <Button icon="sap-icon://filter" text="{i18n>filterBtnText}" type="Emphasized" press=".onFilterBtnPress"/>
+                <Button text="{i18n>addProductBtnText}" type="Accept" press=".onAddProductBtnPress"/>
             </Toolbar>
 
             <List id="productList" items="{oDataV2Model>/Products}" growing="true">
 
                 <items>
                     <ObjectListItem title="{oDataV2Model>Name}"
-                        number="{oDataV2Model>Price}"
-                        numberUnit="USD" type="Active" press=".onListProductPressed">
+                        number="{oDataV2Model>Price}$"
+                        type="Active" press=".onListProductPressed">
 
                         <attributes>
                             <ObjectAttribute text="{oDataV2Model>Description}" />

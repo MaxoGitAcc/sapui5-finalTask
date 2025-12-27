@@ -68,15 +68,16 @@ sap.ui.define([
 
         onSaveEditBtn: function() {
             if(!this._validateRequiredFields()) {
-                MessageToast.show("Please correct the errors before saving.");
                 return;
             }
 
             const oDialog = this._oEditDialog;
             const oModel = this.getModel("oDataV2Model");
+            const oBundle = this.getModel("i18n").getResourceBundle();
 
             oModel.submitChanges({
                 success: function() {
+                    MessageToast.show(oBundle.getText("productEditedSuccessfullyAlert"));
                     oDialog.close();
                 },
                 error: (oError) => {this._showODataErrorV2(oError, "errorWhenEditingProduct");}   
@@ -84,17 +85,18 @@ sap.ui.define([
         },
 
         _setupLiveValidations: function() {
+            const oBundle = this.getModel("i18n").getResourceBundle();
             this._validations = {
-                "EditedProductName" : {fn: Validations.isNotEmpty, msg: "Name cannot be empty"},
-                "EditedProductDescription" : {fn: Validations.isNotEmpty, msg: "Description cannot be empty"},
-                "EditedProductReleaseDate" : {fn: Validations.isValidDate, msg: "Release Date is invalid"},
-                "EditedProductDiscontinuedDate" : {fn: Validations.isValidDate, msg: "Discontinued Date is invalid"},
-                "EditedProductRating" : {fn: Validations.isPositiveNumber, msg: "Rating must be a positive number"},
-                "EditedProductPrice" : {fn: Validations.isPositiveNumber, msg: "Price must be a positive number"}
+                "EditedProductName" : {fn: Validations.isNotEmpty, msg: oBundle.getText("nameInputValidationMsg")},
+                "EditedProductDescription" : {fn: Validations.isNotEmpty, msg: oBundle.getText("descriptionInputValidationMsg")},
+                "EditedProductReleaseDate" : {fn: Validations.isValidDate, msg: oBundle.getText("releaseDateInputValidationMsg")},
+                "EditedProductDiscontinuedDate" : {fn: Validations.isValidDate, msg: oBundle.getText("discontinuedDateInputValidationMsg")},
+                "EditedProductRating" : {fn: Validations.isRaitngNumber, msg: oBundle.getText("ratingInputValidationMsg")},
+                "EditedProductPrice" : {fn: Validations.isPositiveNumber, msg: oBundle.getText("priceInputValidationMsg")}
             };
         },
 
-        _onLiveValidationChangeEM: function(oEvent) {
+        onLiveValidationChangeEM: function(oEvent) {
             const oInput = oEvent.getSource();
             const sInputId = oInput.getId().split("--").pop();
             const oValidation = this._validations[sInputId];
@@ -125,10 +127,11 @@ sap.ui.define([
         onDetailDeleteBtnPress: function() {
             const oModel = this.getModel("oDataV2Model");
             const sPath = this.getView().getBindingContext("oDataV2Model").getPath();
+            const oBundle = this.getModel("i18n").getResourceBundle();
 
             oModel.remove(sPath, {
                 success: () => {
-                    MessageToast.show("Product deleted successfully");
+                    MessageToast.show(oBundle.getText("productDeletedSuccessfullyAlert"));
                     this.onCloseDetailScreen();
                 },
                 error: (oError) => {this._showODataErrorV2(oError, "errorWhenDeletingProduct");}   

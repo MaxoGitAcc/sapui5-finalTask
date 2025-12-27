@@ -48,17 +48,18 @@ sap.ui.define([
 
         onSaveDialogBtnPress: function () {
             if(!this._validateRequiredFields()) {
-                MessageToast.show("Please correct the errors before saving.");
                 return;
             }
 
             const oDialog = this._oAddDialog;
             const oModel = this.getModel("oDataV2Model");
+            const oBundle = this.getModel("i18n").getResourceBundle();
 
             oModel.submitChanges({
                 success: () => {
                     oDialog.close();
                     oModel.refresh(true);
+                    MessageToast.show(oBundle.getText("productCreatedSuccessfullyAlert"));
                     this._resetDialogFields();
                 },
                 error: () => {
@@ -84,13 +85,14 @@ sap.ui.define([
         },
 
         _setupLiveValidations: function() {
+            const oBundle = this.getModel("i18n").getResourceBundle();
             this._validations = {
-                "newProductName" : {fn: Validations.isNotEmpty, msg: "Name cannot be empty"},
-                "newProductDescription" : {fn: Validations.isNotEmpty, msg: "Description cannot be empty"},
-                "newProductReleaseDate" : {fn: Validations.isValidDate, msg: "Release Date is invalid"},
-                "newProductDiscontinuedDate" : {fn: Validations.isValidDate, msg: "Discontinued Date is invalid"},
-                "newProductRating" : {fn: Validations.isPositiveNumber, msg: "Rating must be a positive number"},
-                "newProductPrice" : {fn: Validations.isPositiveNumber, msg: "Price must be a positive number"}
+                "newProductName" : {fn: Validations.isNotEmpty, msg: oBundle.getText("nameInputValidationMsg")},
+                "newProductDescription" : {fn: Validations.isNotEmpty, msg: oBundle.getText("descriptionInputValidationMsg")},
+                "newProductReleaseDate" : {fn: Validations.isValidDate, msg: oBundle.getText("releaseDateInputValidationMsg")},
+                "newProductDiscontinuedDate" : {fn: Validations.isValidDate, msg: oBundle.getText("discontinuedDateInputValidationMsg")},
+                "newProductRating" : {fn: Validations.isRaitngNumber, msg: oBundle.getText("ratingInputValidationMsg")},
+                "newProductPrice" : {fn: Validations.isPositiveNumber, msg: oBundle.getText("priceInputValidationMsg")}
             }
         },
 

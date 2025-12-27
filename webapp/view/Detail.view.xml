@@ -30,7 +30,7 @@
             <sections>
                 <ObjectPageSection>
                     <subSections>
-                        <ObjectPageSubSection title="Product Details">
+                        <ObjectPageSubSection title="{i18n>productDetailsTitle}">
                             <blocks>
 
                                 <form:SimpleForm
@@ -51,24 +51,24 @@
                                     singleContainerFullSize="false">
 
                                     <form:content>
-                                        <m:Label text="Name"/>
+                                        <m:Label text="{i18n>nameLable}"/>
                                         <m:Text text="{oDataV2Model>Name}"/>
 
-                                        <m:Label text="Description"/>
+                                        <m:Label text="{i18n>descriptionLabel}"/>
                                         <m:Text text="{oDataV2Model>Description}"/>
 
-                                        <m:Label text="Release Date"/>
+                                        <m:Label text="{i18n>releaseDateLabel}"/>
                                         <m:Text text="{path: 'oDataV2Model>ReleaseDate',
                                                 formatter: '.formatter.formatMonthYear'}"/>
 
-                                        <m:Label text="Discontinued Date"/>
+                                        <m:Label text="{i18n>discontinuedDateLabel}"/>
                                         <m:Text text="{path: 'oDataV2Model>DiscontinuedDate',
                                                 formatter: '.formatter.formatMonthYear'}"/>
 
-                                        <m:Label text="Rating"/>
+                                        <m:Label text="{i18n>ratingLabel}"/>
                                         <m:Text text="{oDataV2Model>Rating}"/>
 
-                                        <m:Label text="Price"/>
+                                        <m:Label text="{i18n>priceLabel}"/>
                                         <m:Text text="{oDataV2Model>Price}"/>
                                     </form:content>
 

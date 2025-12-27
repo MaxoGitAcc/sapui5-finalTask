@@ -2,30 +2,30 @@
     xmlns="sap.m"
     xmlns:core="sap.ui.core">
 
-    <Dialog id="EditProductDialog" title="Edit Product Detail" contentWidth="400px">
+    <Dialog id="EditProductDialog" title="{i18n>editProductDialogTitle}" contentWidth="400px">
 
         <VBox class="sapUi-Std-PaddingS">
-            <Input id="EditedProductName" placeholder="Name" value="{oDataV2Model>Name}" liveChange=".onLiveValidationChangeEM"/>
-            <Input id="EditedProductDescription" placeholder="Description" value="{oDataV2Model>Description}" liveChange=".onLiveValidationChangeEM"/>
+            <Input id="EditedProductName" placeholder="{i18n>nameInputPlaceholder}" value="{oDataV2Model>Name}" liveChange=".onLiveValidationChangeEM"/>
+            <Input id="EditedProductDescription" placeholder="{i18n>descriptionInputPlaceholder}" value="{oDataV2Model>Description}" liveChange=".onLiveValidationChangeEM"/>
 
-            <DatePicker id="EditedProductReleaseDate" placeholder="ReleaseDate"
+            <DatePicker id="EditedProductReleaseDate" placeholder="{i18n>releaseDateInputPlaceholder}"
                 displayFormat="dd-MM-yyyy"  valueFormat="yyyy-MM-dd" 
                 dateValue="{oDataV2Model>ReleaseDate}" change=".onLiveValidationChangeEM"/>
 
-            <DatePicker id="EditedProductDiscontinuedDate" placeholder="DiscontinuedDate"
+            <DatePicker id="EditedProductDiscontinuedDate" placeholder="{i18n>discontinuedDateInputPlaceholder}"
                 displayFormat="dd-MM-yyyy"  valueFormat="yyyy-MM-dd" 
                 dateValue="{oDataV2Model>DiscontinuedDate}" change=".onLiveValidationChangeEM"/>
             
-            <Input id="EditedProductRating" placeholder="Ratin" type="Number" value="{oDataV2Model>Rating}" liveChange=".onLiveValidationChangeEM"/>
-            <Input id="EditedProductPrice" placeholder="Price" type="Number" value="{oDataV2Model>Price}" liveChange=".onLiveValidationChangeEM"/>
+            <Input id="EditedProductRating" placeholder="{i18n>ratingInputPlaceholder}" type="Number" value="{oDataV2Model>Rating}" liveChange=".onLiveValidationChangeEM"/>
+            <Input id="EditedProductPrice" placeholder="{i18n>priceInputPlaceholder}" type="Number" value="{oDataV2Model>Price}" liveChange=".onLiveValidationChangeEM"/>
         </VBox>
 
         <beginButton>
-            <Button text="Save" press=".onSaveEditBtn"/>
+            <Button text="{i18n>saveDialogBtnText}" press=".onSaveEditBtn"/>
         </beginButton>
 
         <endButton>
-            <Button text="Cancel" press=".onCanelEditBtn"/>
+            <Button text="{i18n>cancelDialogBtnText}" press=".onCanelEditBtn"/>
         </endButton>
 
     </Dialog>

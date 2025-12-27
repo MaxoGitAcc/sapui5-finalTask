@@ -22,6 +22,17 @@ sap.ui.define([], function() {
             return true;
         },
 
+        isRaitngNumber: function(oInput, sMessage) {
+            const iNum = parseFloat(oInput.getValue());
+            if (isNaN(iNum) || iNum < 1 || iNum > 5) {
+                oInput.setValueState("Error");
+                oInput.setValueStateText(sMessage);
+                return false;
+            }
+            oInput.setValueState("None");
+            return true;
+        },
+
         isPositiveNumber: function(oInput, sMessage) {
             const iNum = parseInt(oInput.getValue(), 10);
             if (isNaN(iNum) || iNum < 0) {
