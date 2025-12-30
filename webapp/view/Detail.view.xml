@@ -17,12 +17,25 @@
                     <ObjectPageHeaderActionButton
                         icon="sap-icon://edit"
                         press=".onDetailEditBtnPress"
-                        type="Emphasized"/>
+                        type="Emphasized"
+                        visible="{= !${oDataV2Model>isEditMode}}"/>
+
+                    <m:Button
+                        text="Save"
+                        press=".onSaveProduct"
+                        type="Emphasized" 
+                        visible="{oDataV2Model>isEditMode}"/>
+
+                    <m:Button
+                        text="Cancel"
+                        press=".onCancelProduct"
+                        visible="{oDataV2Model>isEditMode}"/>
 
                     <ObjectPageHeaderActionButton 
                         icon="sap-icon://delete"
                         press=".onDetailDeleteBtnPress"
-                        type="Reject"/>
+                        type="Reject"
+                        visible="{= !${oDataV2Model>isEditMode}}"/>
 
                 </ObjectPageHeader>
             </headerTitle>
@@ -34,6 +47,7 @@
                             <blocks>
 
                                 <form:SimpleForm
+                                    id="productDetailsForm"
                                     editable="false"
                                     layout="ResponsiveGridLayout"
                                     labelSpanXL="4"
@@ -51,25 +65,52 @@
                                     singleContainerFullSize="false">
 
                                     <form:content>
-                                        <m:Label text="{i18n>nameLable}"/>
-                                        <m:Text text="{oDataV2Model>Name}"/>
+                                        <m:Label text="{i18n>nameLabel}"/>
+                                        <m:HBox>
+                                            <m:Text text="{oDataV2Model>Name}" visible="{= !${oDataV2Model>isEditMode}}"/>
+                                            <m:Input id="EditedProductName" value="{oDataV2Model>Name}"
+                                                 visible="{oDataV2Model>isEditMode}" liveChange=".onLiveValidationChangeEM" width="320px"/>
+                                        </m:HBox>
+                                        
 
                                         <m:Label text="{i18n>descriptionLabel}"/>
-                                        <m:Text text="{oDataV2Model>Description}"/>
+                                        <m:HBox>
+                                            <m:Text text="{oDataV2Model>Description}" visible="{= !${oDataV2Model>isEditMode}}"/>
+                                            <m:Input id="EditedProductDescription" value="{oDataV2Model>Description}" 
+                                                visible="{oDataV2Model>isEditMode}" liveChange=".onLiveValidationChangeEM" width="320px"/>
+                                        </m:HBox>
 
                                         <m:Label text="{i18n>releaseDateLabel}"/>
-                                        <m:Text text="{path: 'oDataV2Model>ReleaseDate',
-                                                formatter: '.formatter.formatMonthYear'}"/>
+                                        <m:HBox>
+                                            <m:Text text="{path: 'oDataV2Model>ReleaseDate',
+                                                formatter: '.formatter.formatMonthYear'}"
+                                                visible="{= !${oDataV2Model>isEditMode}}"/>
+                                            <m:DatePicker id="EditedProductReleaseDate" dateValue="{oDataV2Model>ReleaseDate}" 
+                                                visible="{oDataV2Model>isEditMode}" change=".onLiveValidationChangeEM" width="320px"/>
+                                        </m:HBox>
 
                                         <m:Label text="{i18n>discontinuedDateLabel}"/>
-                                        <m:Text text="{path: 'oDataV2Model>DiscontinuedDate',
-                                                formatter: '.formatter.formatMonthYear'}"/>
+                                        <m:HBox>
+                                            <m:Text text="{path: 'oDataV2Model>DiscontinuedDate',
+                                                formatter: '.formatter.formatMonthYear'}"
+                                                visible="{= !${oDataV2Model>isEditMode}}"/>
+                                            <m:DatePicker id="EditedProductDiscontinuedDate" dateValue="{oDataV2Model>DiscontinuedDate}" 
+                                                visible="{oDataV2Model>isEditMode}" change=".onLiveValidationChangeEM" width="320px"/>
+                                        </m:HBox>
 
                                         <m:Label text="{i18n>ratingLabel}"/>
-                                        <m:Text text="{oDataV2Model>Rating}"/>
+                                        <m:HBox>
+                                            <m:Text text="{oDataV2Model>Rating}" visible="{= !${oDataV2Model>isEditMode}}"/>
+                                            <m:Input id="EditedProductRating" value="{oDataV2Model>Rating}" 
+                                            visible="{oDataV2Model>isEditMode}" liveChange=".onLiveValidationChangeEM" width="320px" />
+                                        </m:HBox>
 
                                         <m:Label text="{i18n>priceLabel}"/>
-                                        <m:Text text="{oDataV2Model>Price}"/>
+                                        <m:HBox>
+                                            <m:Text text="{oDataV2Model>Price}" visible="{= !${oDataV2Model>isEditMode}}"/>
+                                            <m:Input id="EditedProductPrice" value="{oDataV2Model>Price}" 
+                                                visible="{oDataV2Model>isEditMode}" liveChange=".onLiveValidationChangeEM" width="320px"/>
+                                        </m:HBox>
                                     </form:content>
 
                                 </form:SimpleForm>

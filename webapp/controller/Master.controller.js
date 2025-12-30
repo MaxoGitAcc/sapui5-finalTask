@@ -15,22 +15,9 @@ sap.ui.define([
         },
 
         //ADD BTN MAIN PAGE
-        _createAddDialog: async function() {
-            if(!this._oAddDialog) {
-                this._oAddDialog = await this.loadFragment({
-                    name: "project1.view.fragments.AddProductDialog"
-                });
-
-                this.getView().addDependent(this._oAddDialog);
-                this._setupLiveValidations();
-            }
-
-            return this._oAddDialog;
-        },
-
-        onAddProductBtnPress: async function () {
-            const oDialog = await this._createAddDialog();
+        onAddProductBtnPress: function () {
             const oModel = this.getModel("oDataV2Model");
+        
             const oContext = oModel.createEntry("/Products", {
                 properties: {
                     Name: "",
@@ -38,109 +25,16 @@ sap.ui.define([
                     ReleaseDate: null,
                     DiscontinuedDate: null,
                     Rating: null,
-                    Price: null
+                    Price: null,
+                    isEditMode: true
                 }
             });
-
-            oDialog.setBindingContext(oContext, "oDataV2Model");
-            oDialog.open();
-        },
-
-        onSaveDialogBtnPress: function () {
-            if(!this._validateRequiredFields()) {
-                return;
-            }
-
-            const oDialog = this._oAddDialog;
-            const oModel = this.getModel("oDataV2Model");
-            const oBundle = this.getModel("i18n").getResourceBundle();
-
-            oModel.submitChanges({
-                success: () => {
-                    oDialog.close();
-                    oModel.refresh(true);
-                    MessageToast.show(oBundle.getText("productCreatedSuccessfullyAlert"));
-                    this._resetDialogFields();
-                },
-                error: () => {
-                    const oBundle = this.getModel("i18n").getResourceBundle();
-                    const sFallback = oBundle.getText(sI18nKey);
-                
-                    let sMessage = "";
-                
-                    try {
-                        if (oError?.responseText) {
-                            const oErrObj = JSON.parse(oError.responseText);
-                            sMessage = oErrObj?.error?.message?.value || "";
-                        } else if (oError?.message) {
-                            sMessage = oError.message;
-                        }
-                    } catch (e) {
-                        console.warn("Error parsing backend response:", e);
-                    }
-                
-                    MessageBox.error(sMessage || sFallback);
-                }  
-            });
-        },
-
-        _setupLiveValidations: function() {
-            const oBundle = this.getModel("i18n").getResourceBundle();
-            this._validations = {
-                "newProductName" : {fn: Validations.isNotEmpty, msg: oBundle.getText("nameInputValidationMsg")},
-                "newProductDescription" : {fn: Validations.isNotEmpty, msg: oBundle.getText("descriptionInputValidationMsg")},
-                "newProductReleaseDate" : {fn: Validations.isValidDate, msg: oBundle.getText("releaseDateInputValidationMsg")},
-                "newProductDiscontinuedDate" : {fn: Validations.isValidDate, msg: oBundle.getText("discontinuedDateInputValidationMsg")},
-                "newProductRating" : {fn: Validations.isRaitngNumber, msg: oBundle.getText("ratingInputValidationMsg")},
-                "newProductPrice" : {fn: Validations.isPositiveNumber, msg: oBundle.getText("priceInputValidationMsg")}
-            }
-        },
-
-        onLiveValidationChange: function (oEvent) {
-            const oInput = oEvent.getSource();
-            const sInputId = oInput.getId().split("--").pop();
-            const oValidation = this._validations[sInputId];
-
-            if(oValidation) {
-                oValidation.fn(oInput, oValidation.msg);
-            }
-        },
-
-        _validateRequiredFields: function() {
-            let bValid = true;
         
-            for (let sId in this._validations) {
-                const oControl = this.byId(sId);
-                const validator = this._validations[sId];
+            this.getOwnerComponent()._createdProductPath = oContext.getPath();
+            this.getOwnerComponent().getRouter().navTo("Detail", {productId: "new"});
         
-                if (oControl && validator) {
-                    if (!validator.fn(oControl, validator.msg)) {
-                        bValid = false;
-                    }
-                }
-            }
-        
-            return bValid;
+            this.getView().getParent().getParent().setLayout(LayoutType.TwoColumnsMidExpanded);
         },
-
-        onCancelDialogBtnPress: function () {
-            const oModel = this.getModel("oDataV2Model");
-            oModel.resetChanges();
-            this._resetDialogFields();
-            this._oAddDialog.close();
-        },
-
-        _resetDialogFields: function() {
-            const oDialog = this._oAddDialog;
-            const oControls = oDialog.getContent()[0].getItems();
-
-            oControls.forEach(oControl => {
-                if(oControl.setValueState) {
-                    oControl.setValueState("None");
-                }
-            });
-        },
-    
 
 
         //SEARCH FIELD MAIN PAGE
@@ -184,7 +78,7 @@ sap.ui.define([
             this._oFilterDialog.close();
         },
 
-        onFilterDialogSave: function(oEvent) {
+        onFilterDialogApply: function(oEvent) {
             const oDialog = oEvent.getSource().getParent();
             const oRadioGroup = oDialog.getContent()[0].getItems()[0];
             const iSelected = oRadioGroup.getSelectedIndex();        

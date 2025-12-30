@@ -12,24 +12,33 @@ sap.ui.define([
         onInit: function () {
             this.getOwnerComponent().getRouter().getRoute("Detail")
                 .attachPatternMatched(this._onRouteMatched, this);
-        },
+        },        
 
         formatter: DateFormatter,
 
         _onRouteMatched: function (oEvent) {
-            const sProductId = oEvent.getParameter("arguments").productId;
-
-            const sPath = "/Products(" + sProductId + ")";
-
+            const oArgs = oEvent.getParameter("arguments");
+            const bIsNew = oArgs.productId === "new";
+        
+            let sPath;
+        
+            if (bIsNew) {
+                sPath = this.getOwnerComponent()._createdProductPath;
+            } else {
+                sPath = "/Products(" + oArgs.productId + ")";
+            }
+        
             this.getView().bindElement({
                 path: sPath,
                 model: "oDataV2Model"
             });
-
-            const oFCL = this.getView().getParent().getParent();
-            if (oFCL.getLayout() !== LayoutType.TwoColumnsMidExpanded) {
-                oFCL.setLayout(LayoutType.TwoColumnsMidExpanded);
-            }
+        
+            const oContext = this.getView().getBindingContext("oDataV2Model");
+            oContext.setProperty("isEditMode", bIsNew);
+        
+            this.getView().getParent().getParent().setLayout(LayoutType.TwoColumnsMidExpanded);
+        
+            this._setupLiveValidations();
         },
 
         onCloseDetailScreen: function() {
@@ -41,49 +50,74 @@ sap.ui.define([
         },
 
 
-        //EDIT BTN
-        _createEditDialog: async function() {
-            if(!this._oEditDialog) {
-                this._oEditDialog = await this.loadFragment({
-                    name: "project1.view.fragments.EditProductDialog"
-                });
-
-                this._setupLiveValidations();
-                this.getView().addDependent(this._oEditDialog);
-            }
-
-            return this._oEditDialog;
+        //EDIT && ADD BTN
+        onDetailEditBtnPress: function() {
+            const oContext = this.getView().getBindingContext("oDataV2Model");
+            oContext.setProperty("isEditMode", true);
         },
 
-        onDetailEditBtnPress: async function() {
-            const oDialog = await this._createEditDialog();
-            oDialog.open();
-        },
-
-        onCanelEditBtn: function() {
-            const oModel = this.getModel("oDataV2Model");
-            oModel.resetChanges();
-            this._oEditDialog.close();
-        },
-
-        onSaveEditBtn: function() {
-            if(!this._validateRequiredFields()) {
+        onSaveProduct: function () {
+            if (!this._validateRequiredFields()) {
                 return;
             }
-
-            const oDialog = this._oEditDialog;
+        
             const oModel = this.getModel("oDataV2Model");
-            const oBundle = this.getModel("i18n").getResourceBundle();
-
+            const oContext = this.getView().getBindingContext("oDataV2Model");
+            const bIsNew = oContext.isTransient();
+        
+            if (bIsNew) {
+                delete oContext.getObject().isEditMode;
+            }
+        
             oModel.submitChanges({
-                success: function() {
-                    MessageToast.show(oBundle.getText("productEditedSuccessfullyAlert"));
-                    oDialog.close();
-                },
-                error: (oError) => {this._showODataErrorV2(oError, "errorWhenEditingProduct");}   
-            })
-        },
+                success: () => {
+                    this._resetDialogFields();
+        
+                    const oBundle = this.getModel("i18n").getResourceBundle();
+        
+                    if (bIsNew) {
+                        this.getModel("oDataV2Model").refresh(true);
 
+                        const sNewId = oContext.getProperty("ID");
+        
+                        delete this.getOwnerComponent()._createdProductPath;
+        
+                        MessageToast.show(oBundle.getText("productCreatedSuccessfullyAlert"));
+        
+                        this.getOwnerComponent().getRouter().navTo("Detail", {productId: sNewId}, true);
+        
+                        return;
+                    }
+        
+                    MessageToast.show(oBundle.getText("productEditedSuccessfullyAlert"));
+        
+                    oContext.setProperty("isEditMode", false);
+                },
+                error: (oError) => {this._showODataErrorV2(oError, "errorWhenSavingProduct");}
+            });
+        },
+        
+        onCancelProduct: function () {
+            const oModel = this.getModel("oDataV2Model");
+            const oContext = this.getView().getBindingContext("oDataV2Model");
+            const bIsNew = oContext.isTransient();
+        
+            if (bIsNew) {
+                oModel.deleteCreatedEntry(oContext);
+        
+                delete this.getOwnerComponent()._createdProductPath;
+                
+                this._resetDialogFields();
+                this.onCloseDetailScreen();
+                return;
+            }
+        
+            oModel.resetChanges([oContext.getPath()], true);
+            oContext.setProperty("isEditMode", false);
+        
+            this._resetDialogFields();
+        },
+        
         _setupLiveValidations: function() {
             const oBundle = this.getModel("i18n").getResourceBundle();
             this._validations = {
@@ -121,6 +155,16 @@ sap.ui.define([
             }
         
             return bValid;
+        },
+
+        _resetDialogFields: function() {
+            for (let sId in this._validations) {
+                const oControl = this.byId(sId);
+        
+                if (oControl) {
+                    oControl.setValueState("None");
+                }
+            }
         },
 
         //Delete BTN

@@ -16,7 +16,7 @@
         </VBox>
 
         <beginButton>
-            <Button text="{i18n>saveDialogBtnText}" press=".onFilterDialogSave"/>
+            <Button text="{i18n>applyDialogBtnText}" press=".onFilterDialogApply"/>
         </beginButton>
 
         <endButton>
