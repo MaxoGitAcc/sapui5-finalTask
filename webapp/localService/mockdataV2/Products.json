@@ -1,0 +1,213 @@
+[
+	{
+	  "ID": 1,
+	  "Name": "iPhone 15 Pro",
+	  "Description": "Smartphone.",
+	  "ReleaseDate": "/Date(1693526400000)/",
+	  "DiscontinuedDate": "/Date(1725062400000)/",
+	  "Rating": 5,
+	  "Price": 1199.00,
+	  "Supplier": {
+		"ID": 1,
+		"Concurrency": 0,
+		"Name": "Apple Inc.",
+		"Address": {
+		  "Street": "1 Apple Park Way",
+		  "City": "Cupertino",
+		  "State": "CA",
+		  "ZipCode": "95014",
+		  "Country": "USA"
+		}
+	  }
+	},
+	{
+	  "ID": 2,
+	  "Name": "Samsung Galaxy S24",
+	  "Description": "Smartphone.",
+	  "ReleaseDate": "/Date(1705276800000)/",
+	  "DiscontinuedDate": "/Date(1736812800000)/",
+	  "Rating": 4,
+	  "Price": 999.00,
+	  "Supplier": {
+		"ID": 2,
+		"Concurrency": 0,
+		"Name": "Samsung",
+		"Address": {
+		  "Street": "129 Samsung-ro",
+		  "City": "Suwon",
+		  "State": "",
+		  "ZipCode": "16677",
+		  "Country": "South Korea"
+		}
+	  }
+	},
+	{
+	  "ID": 3,
+	  "Name": "Google Pixel 8",
+	  "Description": "Smartphone.",
+	  "ReleaseDate": "/Date(1696118400000)/",
+	  "DiscontinuedDate": "/Date(1727750400000)/",
+	  "Rating": 4,
+	  "Price": 899.00,
+	  "Supplier": {
+		"ID": 3,
+		"Concurrency": 0,
+		"Name": "Google",
+		"Address": {
+		  "Street": "1600 Amphitheatre Parkway",
+		  "City": "Mountain View",
+		  "State": "CA",
+		  "ZipCode": "94043",
+		  "Country": "USA"
+		}
+	  }
+	},
+	{
+	  "ID": 4,
+	  "Name": "MacBook Pro 14",
+	  "Description": "Laptop.",
+	  "ReleaseDate": "/Date(1693526400000)/",
+	  "DiscontinuedDate": "/Date(1725062400000)/",
+	  "Rating": 5,
+	  "Price": 1999.00,
+	  "Supplier": {
+		"ID": 1,
+		"Concurrency": 0,
+		"Name": "Apple Inc.",
+		"Address": {
+		  "Street": "1 Apple Park Way",
+		  "City": "Cupertino",
+		  "State": "CA",
+		  "ZipCode": "95014",
+		  "Country": "USA"
+		}
+	  }
+	},
+	{
+	  "ID": 5,
+	  "Name": "Dell XPS 15",
+	  "Description": "Laptop.",
+	  "ReleaseDate": "/Date(1672531200000)/",
+	  "DiscontinuedDate": "/Date(1704067200000)/",
+	  "Rating": 4,
+	  "Price": 1799.00,
+	  "Supplier": {
+		"ID": 4,
+		"Concurrency": 0,
+		"Name": "Dell",
+		"Address": {
+		  "Street": "One Dell Way",
+		  "City": "Round Rock",
+		  "State": "TX",
+		  "ZipCode": "78682",
+		  "Country": "USA"
+		}
+	  }
+	},
+	{
+	  "ID": 6,
+	  "Name": "iPad Pro",
+	  "Description": "Tablet.",
+	  "ReleaseDate": "/Date(1680307200000)/",
+	  "DiscontinuedDate": "/Date(1711843200000)/",
+	  "Rating": 5,
+	  "Price": 1099.00,
+	  "Supplier": {
+		"ID": 1,
+		"Concurrency": 0,
+		"Name": "Apple Inc.",
+		"Address": {
+		  "Street": "1 Apple Park Way",
+		  "City": "Cupertino",
+		  "State": "CA",
+		  "ZipCode": "95014",
+		  "Country": "USA"
+		}
+	  }
+	},
+	{
+	  "ID": 7,
+	  "Name": "Apple Watch Series 9",
+	  "Description": "Smartwatch.",
+	  "ReleaseDate": "/Date(1693526400000)/",
+	  "DiscontinuedDate": "/Date(1725062400000)/",
+	  "Rating": 4,
+	  "Price": 399.00,
+	  "Supplier": {
+		"ID": 1,
+		"Concurrency": 0,
+		"Name": "Apple Inc.",
+		"Address": {
+		  "Street": "1 Apple Park Way",
+		  "City": "Cupertino",
+		  "State": "CA",
+		  "ZipCode": "95014",
+		  "Country": "USA"
+		}
+	  }
+	},
+	{
+	  "ID": 8,
+	  "Name": "Sony WH-1000XM5",
+	  "Description": "Headphones.",
+	  "ReleaseDate": "/Date(1654041600000)/",
+	  "DiscontinuedDate": "/Date(1685577600000)/",
+	  "Rating": 5,
+	  "Price": 399.00,
+	  "Supplier": {
+		"ID": 5,
+		"Concurrency": 0,
+		"Name": "Sony",
+		"Address": {
+		  "Street": "1-7-1 Konan",
+		  "City": "Tokyo",
+		  "State": "",
+		  "ZipCode": "108-0075",
+		  "Country": "Japan"
+		}
+	  }
+	},
+	{
+	  "ID": 9,
+	  "Name": "Logitech MX Master 3S",
+	  "Description": "Mouse.",
+	  "ReleaseDate": "/Date(1651363200000)/",
+	  "DiscontinuedDate": "/Date(1682899200000)/",
+	  "Rating": 5,
+	  "Price": 99.00,
+	  "Supplier": {
+		"ID": 6,
+		"Concurrency": 0,
+		"Name": "Logitech",
+		"Address": {
+		  "Street": "Logitech Campus",
+		  "City": "Lausanne",
+		  "State": "",
+		  "ZipCode": "1015",
+		  "Country": "Switzerland"
+		}
+	  }
+	},
+	{
+	  "ID": 10,
+	  "Name": "Samsung 970 EVO Plus",
+	  "Description": "SSD.",
+	  "ReleaseDate": "/Date(1548979200000)/",
+	  "DiscontinuedDate": "/Date(1580515200000)/",
+	  "Rating": 4,
+	  "Price": 149.00,
+	  "Supplier": {
+		"ID": 2,
+		"Concurrency": 0,
+		"Name": "Samsung",
+		"Address": {
+		  "Street": "129 Samsung-ro",
+		  "City": "Suwon",
+		  "State": "",
+		  "ZipCode": "16677",
+		  "Country": "South Korea"
+		}
+	  }
+	}
+  ]
+  

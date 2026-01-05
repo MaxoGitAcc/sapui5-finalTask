@@ -1,0 +1,28 @@
+<core:FragmentDefinition 
+    xmlns="sap.m" 
+    xmlns:core="sap.ui.core">
+
+    <Dialog id="FilterDialog" title="{i18n>filterDialogTitle}" contentWidth="300px">
+
+        <VBox class="sapUi-Std-PaddingS">
+            <RadioButtonGroup id="sortOptions" columns="1" selectedIndex="0">
+                <buttons>
+                    <RadioButton text="{i18n>radioPriceLowToHigh}"/>
+                    <RadioButton text="{i18n>radioPriceHighToLow}"/>
+                    <RadioButton text="{i18n>radioNameAToZ}"/>
+                    <RadioButton text="{i18n>radioNameZToA}"/>
+                </buttons>
+            </RadioButtonGroup>
+        </VBox>
+
+        <beginButton>
+            <Button text="{i18n>applyDialogBtnText}" press=".onFilterDialogApply"/>
+        </beginButton>
+
+        <endButton>
+            <Button text="{i18n>cancelDialogBtnText}" press=".onFilterDialogCancel"/>
+        </endButton>
+
+    </Dialog>
+
+</core:FragmentDefinition>
